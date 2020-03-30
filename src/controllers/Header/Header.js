@@ -1,9 +1,9 @@
 import React from "react";
-
-export default Header = props => {
+const Header = props => {
   return (
     <header className="Header">
       <Navigation />
     </header>
   );
 };
+export default Header;
