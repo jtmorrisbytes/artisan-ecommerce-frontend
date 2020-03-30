@@ -4,12 +4,9 @@ const Card = props => {
   return (
     <div className="Product Card">
       <img src="http://picsum.photos/200/200" alt="example image" />
-      <span className="name">PRODUCT NAME</span>
-      <span className="price">$999.99</span>
-      <p className="description">
-        This is an example description that should be termniated with a trailing
-        elipsis
-      </p>
+      <span className="name">{props.name}</span>
+      <span className="price">{props.price}</span>
+      <p className="description">{props.description}</p>
       <a className="moreDescription">see more</a>
       <button className="add-or-edit">Add To Cart</button>
     </div>
