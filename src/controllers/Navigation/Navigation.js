@@ -6,7 +6,8 @@ const Navigation = props => {
     <nav id="Navigation">
       navigation works
       <div className="nav-links">
-        <Link to="/">HOME</Link>
+        <Link to="/home">HOME</Link>
+        <Link to="/products">PRODUCTS</Link>
         <Link to="/cart">CART</Link>
       </div>
     </nav>
