@@ -9,7 +9,7 @@ import {
   Redirect
 } from "react-router-dom";
 import Header from "./controllers/Header/Header";
-const apiUrl = "http://builder.jtmorrisbytes.com/api";
+const apiUrl = "http://builder.jtmorrisbytes.com:3001/api";
 function App() {
   return (
     <div className="App">
@@ -24,7 +24,7 @@ function App() {
               <p>welcome to cart</p>
             </Route>
             <Route path="/products">
-              <Products {...apiUrl} />
+              <Products apiUrl={apiUrl} />
             </Route>
             <Route path="/">
               <Redirect to="/home" />
