@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import Products from "./controllers/Products";
 import {
   HashRouter as Router,
   Switch,
@@ -14,20 +15,22 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <Switch>
-          <Route path="/home">
-            <p>welcome to the home page</p>
-          </Route>
-          <Route path="/cart">
-            <p>welcome to cart</p>
-          </Route>
-          <Route path="/products">
-            <p> welcome to product listing</p>
-          </Route>
-          <Route path="/">
-            <Redirect to="/home" />
-          </Route>
-        </Switch>
+        <main>
+          <Switch>
+            <Route path="/home">
+              <p>welcome to the home page</p>
+            </Route>
+            <Route path="/cart">
+              <p>welcome to cart</p>
+            </Route>
+            <Route path="/products">
+              <Products {...apiUrl} />
+            </Route>
+            <Route path="/">
+              <Redirect to="/home" />
+            </Route>
+          </Switch>
+        </main>
       </Router>
     </div>
   );
