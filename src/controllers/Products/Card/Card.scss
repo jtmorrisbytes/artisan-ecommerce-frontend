@@ -1,0 +1,76 @@
+@import "../../../breakpoints.scss";
+.Card {
+  // max-width: 150px;
+  margin: 0;
+  // width: 80%;
+  // margin-left: auto;
+  // margin-right: auto;
+  display: grid;
+  max-height: 750px;
+  grid-template-areas:
+    "i"
+    "n"
+    "p"
+    "d"
+    "a"
+    "e"
+    "del";
+  grid-template-columns: 80%;
+  border: 1px solid white;
+  grid-template-rows: auto 1fr 1fr 2fr 2fr 2fr 2fr;
+  box-shadow: 0px 3px 2px black;
+  border-top: 1px solid black;
+  // width: 100%;
+  img {
+    grid-area: i;
+    width: 100%;
+    // max-width: 200px;
+    height: auto;
+  }
+  .name {
+    grid-area: n;
+    font-size: 1.1em;
+    word-wrap: wrap;
+  }
+  .description {
+    grid-area: d;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    max-height: 300px;
+  }
+  .contents {
+    grid-area: content;
+  }
+  .add {
+    grid-area: a;
+  }
+  .edit {
+    grid-area: e;
+  }
+  .delete {
+    grid-area: del;
+  }
+  .price {
+    grid-area: p;
+  }
+}
+
+@media screen and (min-width: $break-md) {
+  .Card {
+    grid-template-areas:
+      "i i i i n n n n n n n n n"
+      "i i i i p p p p p p p p p"
+      "i i i i p p p p p p p p p"
+      "d d d d d d d d d d d d d"
+      "a a a a a a a a a a a a a";
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 12% 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+@media screen and (min-width: $break-md) {
+  .Card {
+    width: 80%;
+    max-width: 200px;
+    flex-direction: column;
+  }
+}

@@ -1,6 +1,6 @@
-import React from React
-import "./{blank}.css"
-const {Blank} = (props) =>{
-  return (<div></div>);
-}
-export default Blank
+import React from "react";
+import "./{ blank }.scss";
+const { Blank } = props => {
+  return <div></div>;
+};
+export default { Blank };

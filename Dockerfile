@@ -2,11 +2,11 @@ FROM node:13.10.1-slim as builder
 
 
 COPY package.json .
-COPY yarn.lock .
+COPY package.json .
 COPY public ./public
 COPY src ./src
 
-RUN yarn install
+RUN npm install
 RUN npm run build
 
 FROM nginx AS serve

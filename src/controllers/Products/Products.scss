@@ -1,0 +1,33 @@
+.Products {
+  display: contents;
+}
+
+.Products .Listing .Card {
+  // grid-area: main;
+}
+@media screen and (min-width: 525px) {
+  // .Products .Listing {
+  //   grid-template-columns: 1fr 1fr;
+  //   grid-gap: 1%;
+  // }
+}
+@media screen and (min-width: 725px) {
+  .Products {
+    flex-direction: row;
+  }
+  .Products .SearchFilter {
+    // height: 500px;
+    // min-width: 100px;
+    // width: 20%;
+    // max-width: 250px;
+  }
+}
+// @media screen and (min-width: 900px) {
+//   .Products .Listing {
+//     grid-template-columns: 1fr 1fr 1fr;
+//   }
+// }
+@import "Card/Card.scss";
+// @import "controllers/Products/Edit/Card.css";
+@import "Listing/Listing.scss";
+@import "SearchFilter/SearchFilter.scss";
