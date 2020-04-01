@@ -1,33 +1,28 @@
+@import "../../breakpoints.scss";
 .Products {
-  display: contents;
+  display: grid;
+  grid-area: main;
+  grid-template-areas:
+    "searchfilter"
+    "listing";
+  grid-template-rows: 200px auto;
+  column-gap: $col-gutter;
 }
-
-.Products .Listing .Card {
-  // grid-area: main;
-}
-@media screen and (min-width: 525px) {
-  // .Products .Listing {
-  //   grid-template-columns: 1fr 1fr;
-  //   grid-gap: 1%;
-  // }
+@media screen and (min-width: $break-md) {
+  .Products {
+    grid-template-areas:
+      "searchfilter listing"
+      "searchfilter listing";
+    grid-template-columns: 200px 1fr;
+    overflow: scroll;
+    margin-top: -200px;
+  }
+  .SearchFilter {
+    margin-top: 200px;
+  }
 }
 @media screen and (min-width: 725px) {
-  .Products {
-    flex-direction: row;
-  }
-  .Products .SearchFilter {
-    // height: 500px;
-    // min-width: 100px;
-    // width: 20%;
-    // max-width: 250px;
-  }
 }
-// @media screen and (min-width: 900px) {
-//   .Products .Listing {
-//     grid-template-columns: 1fr 1fr 1fr;
-//   }
-// }
 @import "Card/Card.scss";
-// @import "controllers/Products/Edit/Card.css";
 @import "Listing/Listing.scss";
 @import "SearchFilter/SearchFilter.scss";

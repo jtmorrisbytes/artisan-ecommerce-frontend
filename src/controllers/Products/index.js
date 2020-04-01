@@ -12,10 +12,58 @@ const defaultProduct = {
   price: 999.99
 };
 class Products extends Component {
+  P_ASC = "p_asc";
+  P_DESC = "p_desc";
+  N_ASC = "n_asc";
+  N_DESC = "n_desc";
   state = {
     products: [],
     limit: 30,
+    priceMin: null,
+    priceMax: null,
+    name: "",
+
+    sp: this.P_ASC,
+    sn: this.N_ASC,
     enableActions: true
+  };
+  updateHistory = ({ name, sp, sn, priceMin, priceMax, limit, ...rest }) => {
+    console.log(this.props.history);
+    this.props.history.replace(
+      `${this.props.history.location.pathname}?name=${name}&limit=${limit ||
+        this.state.limit}&sp=${sp || this.state.sp || this.P_ASC}`
+    );
+  };
+  getSearchParams() {
+    let params = new URLSearchParams(this.props.history.location.search);
+    return {
+      name: params.get("name"),
+      limit: params.get("limit"),
+      sp: params.get("sp"),
+      sn: params.get("sn"),
+      priceMax: params.get("priceMax"),
+      priceMin: params.get("priceMin")
+    };
+  }
+  getProducts = () => {
+    let params = this.getSearchParams();
+    Axios.get(`/api/products?name=${params.name}`)
+      .then(res => {
+        console.log(res.data.data);
+        if (res.data.data) {
+          this.setState({ products: res.data.data });
+        }
+      })
+      .catch(console.error);
+  };
+  handleNameChange = e => {
+    console.log(this.props);
+
+    this.setState({ name: e.target.value });
+
+    this.updateHistory({ name: e.target.value });
+    console.log(e.charCode, e.key, String.fromCharCode(e.keyCode));
+    // this.setState({ name: e.target.value });
   };
   deleteItem = id => {
     console.log(id);
@@ -30,14 +78,20 @@ class Products extends Component {
       });
   };
   componentDidMount() {
-    Axios.get("/api/products")
-      .then(res => {
-        console.log(res.data.data);
-        if (res.data.data) {
-          this.setState({ products: res.data.data });
-        }
-      })
-      .catch(console.error);
+    this.unregisterHistoryListener = this.props.history.listen(
+      this.getProducts
+    );
+    let params = this.getSearchParams();
+    this.setState({
+      name: params.name || this.state.name,
+      limit: params.limit || this.state.limit
+    });
+    this.getProducts();
+  }
+  componentWillUnmount() {
+    if (this.unregisterHistoryListener) {
+      this.unregisterHistoryListener();
+    }
   }
   render() {
     let displayProducts = [];
@@ -65,7 +119,10 @@ class Products extends Component {
     }
     return (
       <main className="Products">
-        <SearchFilter />
+        <SearchFilter
+          name={this.state.name}
+          handleNameChange={this.handleNameChange}
+        />
         <Listing products={displayProducts} />
       </main>
     );

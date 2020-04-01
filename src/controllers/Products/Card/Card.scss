@@ -1,6 +1,7 @@
 @import "../../../breakpoints.scss";
 .Card {
   // max-width: 150px;
+  // grid-area: main;
   margin: 0;
   // width: 80%;
   // margin-left: auto;
@@ -22,18 +23,18 @@
   border-top: 1px solid black;
   // width: 100%;
   img {
-    grid-area: i;
+    grid-area: ig;
     width: 100%;
     // max-width: 200px;
     height: auto;
   }
   .name {
-    grid-area: n;
+    grid-area: nm;
     font-size: 1.1em;
     word-wrap: wrap;
   }
   .description {
-    grid-area: d;
+    grid-area: dc;
     text-overflow: ellipsis;
     word-wrap: break-word;
     max-height: 300px;
@@ -42,35 +43,48 @@
     grid-area: content;
   }
   .add {
-    grid-area: a;
+    grid-area: ad;
   }
   .edit {
-    grid-area: e;
+    grid-area: ed;
   }
   .delete {
-    grid-area: del;
+    grid-area: dl;
   }
   .price {
-    grid-area: p;
+    grid-area: pr;
   }
 }
 
-@media screen and (min-width: $break-md) {
+@media screen and (min-width: $break-sm) {
   .Card {
     grid-template-areas:
-      "i i i i n n n n n n n n n"
-      "i i i i p p p p p p p p p"
-      "i i i i p p p p p p p p p"
-      "d d d d d d d d d d d d d"
-      "a a a a a a a a a a a a a";
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-columns: 12% 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      "ig ig ig ig nm nm nm nm nm nm nm nm nm"
+      "ig ig ig ig pr pr pr pr pr pr pr pr pr"
+      "ig ig ig ig pr pr pr pr pr pr pr pr pr"
+      "dc dc dc dc dc dc dc dc dc dc dc dc dc"
+      "ad ad ad ad ad ad ad ad ad ad ad ad ad"
+      "ed ed ed ed ed ed ed ed ed ed ed ed ed"
+      "dl dl dl dl dl dl dl dl dl dl dl dl dl";
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   }
 }
 @media screen and (min-width: $break-md) {
   .Card {
-    width: 80%;
-    max-width: 200px;
-    flex-direction: column;
+    // width: 80%;
+    // max-width: 200px;
+    // flex-direction: column;
+  }
+}
+@media screen and (min-width: $break-md) {
+  .Card {
+    grid-template-areas:
+      "ig ig ig ig nm nm nm nm nm nm nm nm"
+      "ig ig ig ig pr pr pr pr pr pr pr pr"
+      "ig ig ig ig pr pr pr pr pr pr pr pr"
+      "dc dc dc dc dc dc dc dc dc dc dc dc"
+      "ad ad ad ad ed ed ed ed dl dl dl dl";
+    grid-template-rows: 3fr 3fr 3fr 5fr 2fr;
   }
 }

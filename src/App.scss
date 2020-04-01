@@ -30,11 +30,10 @@ html {
     "brand-img"
     "navigation"
     "search-bar"
-    "sidebar"
     "main"
     "footer";
   /* grid-template-rows: auto; */
-  grid-auto-rows: auto 50px 50px 100px auto 100px;
+  grid-auto-rows: 40vw 2em 2em auto 100px;
   grid-template-columns: 100vw;
 
   row-gap: $row-gutter;
@@ -52,14 +51,14 @@ html {
 @media screen and (min-width: $break-md) {
   .App {
     grid-template-areas:
-      "brand-img navigation navigation"
-      "search-bar search-bar search-bar"
-      "sidebar main main"
-      "footer footer footer";
+      "brand-img navigation"
+      "search-bar search-bar"
+      "main main"
+      "footer footer";
 
     // grid-template-rows: ;
-    grid-template-columns: 200px auto auto;
-    grid-template-rows: 100px (50px - $col-gutter) 80vh 1fr;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 100px 1.5em auto 100px;
   }
 }
 @media screen and (min-width: $break-lg) {

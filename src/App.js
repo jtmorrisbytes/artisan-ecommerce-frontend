@@ -25,12 +25,8 @@ function App() {
             <p>welcome to cart</p>
           </Route>
           <Route path="/products" component={Products} apiUrl={apiUrl} />
-          <Route path="/product/:id">
-            <p>product detail</p>
-          </Route>
-          <Route path="/edit/:id">
-            <Edit />
-          </Route>
+          <Route path="/product/:id" component={Products} apiUrl={apiUrl} />
+          <Route path="/edit/:id" component={Edit}></Route>
 
           <Route path="/">
             <Redirect to="/home" />
